@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import animation
 
+N = int(input("Please enter a positive integer N to create an N by N grid"))
+p_born = float(input("Please enter the probability, between 0 and 1, of a cell initialized as alive")
 
 def iterate(X):
     X1 = np.zeros((N, N))
@@ -19,38 +21,23 @@ def iterate(X):
                     X1[i,j]=blue
             else:
                 if nb==3: X1[i,j]=red
-                    
-
-            
     return X1
-        
-        
         
 # neighbor pixel directions
 nx = [-1, -1, 0, 1, 1, 1, 0, -1]
 ny = [0, 1, 1, 1, 0, -1, -1, -1]
 blue=0
 red=1
-N = 100
 X = np.zeros((N, N),dtype=int)
 for i in range(N):
     for j in range(N):
-        if np.random.random()>0.8 : X[i,j]=red
+        if np.random.random()>p_born : X[i,j]=red
 
-
-
-
-
-#
-# do not change below
-#
 pause = False
 
 def onClick(event):
     global pause
     pause ^= True
-
-
 
 fig = plt.figure(figsize=(25/3, 6.25))
 ax = fig.add_subplot(111)
